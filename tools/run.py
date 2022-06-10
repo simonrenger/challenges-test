@@ -36,7 +36,7 @@ for i,r in  enumerate(res):
     entry["name"] = sys.argv[1]
 
     before = time.perf_counter()
-    status = os.system("clang++ -Wall -std=c++17 {} -o {}".format(r,name[i]))
+    status = os.system("clang++ -Wall -std=c++17 {} -o {}.out".format(r,name[i]))
     after = time.perf_counter()
     entry["build-time"] = after-before
     entry["build"] = True if status == 0 else False
@@ -44,7 +44,7 @@ for i,r in  enumerate(res):
     print(f"compilation took {after-before:0.4f}")
     if status == 0:
         before = time.perf_counter()
-        os.system("./{}".format(name[i]))
+        os.system("./{}.out".format(name[i]))
         after = time.perf_counter()
         print(f"execution took {after-before:0.4f}")
         entry["elapse"] = after-before
