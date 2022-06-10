@@ -20,7 +20,7 @@ jobs:
         run: |
           mv ./submitted/put_your_files_here/* ./main/put_your_files_here/
           rm -r ./submitted
-          mv ./main .
+          mv ./main/* ./
       - name: setup
         run: |
           sudo apt update -y
