@@ -34,3 +34,7 @@ jobs:
         with:
           message: Add results of ${{github.event.pull_request.user.login}}
           committer_name: GitHub Actions
+      - name: Close Pull
+        uses: peter-evans/close-pull@v2
+        with:
+          comment: Auto-closing pull request
