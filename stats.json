@@ -1,1 +1,1 @@
-[{"id": "challange_1", "name": "Challange A", "results": [{"name": "simonrenger", "build-time": 10.329275015000007, "build": true, "elapse": 0.0021274229999903582}]}, {"id": "challange_2", "name": "Challange B", "results": []}]
+[{"id": "challange_1", "name": "Challange A", "results": [{"name": "simonrenger", "build-time": 10.329275015000007, "build": true, "elapse": 0.0021274229999903582}, {"name": "simonrenger", "build-time": 8.125692848, "build": true, "elapse": 0.0023847360000104345}]}, {"id": "challange_2", "name": "Challange B", "results": []}]
