@@ -15,13 +15,12 @@ jobs:
         with:
           repository: 'simonrenger/challenges-test'
           ref: 'main'
-          clean: false
+          path: 'main'
       - name: copy stuff
         run: |
-          ls
-          ls ./submitted/put_your_files_here
-          mv ./submitted/put_your_files_here/* ./put_your_files_here/
+          mv ./submitted/put_your_files_here/* ./main/put_your_files_here/
           rm -r ./submitted
+          mv ./main .
       - name: setup
         run: |
           sudo apt update -y
