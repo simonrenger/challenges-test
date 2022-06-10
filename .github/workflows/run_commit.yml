@@ -34,9 +34,7 @@ jobs:
         with:
           message: Add results of ${{github.event.pull_request.user.login}}
           committer_name: GitHub Actions
-      - name: Close Pull
-        uses: peter-evans/close-pull@v2
+      - uses: superbrothers/close-pull-request@v3
+        if: ${{always()}}
         with:
-          pull-request-number: 1
-          comment: Auto-closing pull request
-          delete-branch: true
+          comment: "Processed"
