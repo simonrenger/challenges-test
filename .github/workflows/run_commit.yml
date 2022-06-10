@@ -6,21 +6,19 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-        with:
-          path: 'submitted'
       - name: Checkout tests
         uses: actions/checkout@v2
         with:
           repository: 'simonrenger/challenges-test'
           ref: 'main'
-          path: 'main'
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          path: 'submitted'
       - name: copy stuff
         run: |
-          mv ./submitted/put_your_files_here/* ./main/put_your_files_here/
+          mv ./submitted/put_your_files_here/* ./put_your_files_here/
           rm -r ./submitted
-          mv ./main/* ./
       - name: setup
         run: |
           sudo apt update -y
