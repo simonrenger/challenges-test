@@ -1,0 +1,42 @@
+name: Build & test
+on:
+  pull_request:
+    types: [opened]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          path: 'submitted'
+      - name: Checkout tests
+        uses: actions/checkout@v2
+        with:
+          repository: 'simonrenger/challenges-test'
+          ref: 'main'
+      - name: copy stuff
+        run: |
+          mv ./submitted/put_your_files_here/* ./put_your_files_here/
+          rm -r ./submitted
+      - name: setup
+        run: |
+          sudo apt update -y
+          sudo apt install build-essential lld clang -y python3
+      - name: compile challenges
+        run: python ./tools/run.py ${{github.event.pull_request.user.login}}
+      - name: clean
+        run: | 
+          rm -r ./put_your_files_here/
+          mkdir ./put_your_files_here
+          touch ./put_your_files_here/.empty
+      - uses: EndBug/add-and-commit@v9
+        with:
+          message: Add results of ${{github.event.pull_request.user.login}}
+          committer_name: GitHub Actions
+      - name: Close Pull
+        uses: peter-evans/close-pull@v2
+        with:
+          pull-request-number: 1
+          comment: Auto-closing pull request
+          delete-branch: true
